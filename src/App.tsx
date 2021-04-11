@@ -2,6 +2,7 @@ import * as React from 'react';
 import TodoList from './TodoList';
 
 const App = () => {
+    console.log('App is Rendering');
     const [text, setText] = React.useState('');
     const [todos, setTodos] = React.useState([
         {
@@ -23,9 +24,9 @@ const App = () => {
         setText('');
     }
 
-    const handleRemoveTodo = (id: string) => {
-        setTodos(todos.filter(todo => todo.id !== id));
-    }
+    const handleRemoveTodo = React.useCallback(
+        (id: string) => setTodos(todos.filter(todo => todo.id !== id)), [todos]
+    )
 
     return (
         <div>

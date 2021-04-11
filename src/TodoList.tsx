@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-const TodoList = (props: any) => {
+const TodoList = React.memo((props: any) => {
+    console.log('Todo List is Rendering');
     const { list, onRemove } = props;
 
     return (
@@ -10,9 +11,10 @@ const TodoList = (props: any) => {
             }
         </ul>
     )
-}
+})
 
-const ListItem = ({ item, onRemove } : any) => {
+const ListItem = React.memo(({ item, onRemove } : any) => {
+    console.log('Todo Item is Rendering');
     return (
       <li>
         {item.name}
@@ -21,5 +23,5 @@ const ListItem = ({ item, onRemove } : any) => {
         </button>
       </li>
     );
-  };
+})
 export default TodoList;
